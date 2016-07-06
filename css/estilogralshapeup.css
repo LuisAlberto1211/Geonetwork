@@ -1,0 +1,121 @@
+body {
+	background-color:#ffffff;
+	/*background-image:url('../imagenes/backGralExp.jpg');*/
+	background-position: center top;
+	background-repeat:no-repeat;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;	/*background-color: #ee2e24;*/
+	margin-top: 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+h4,h5 {
+	color:#C00;
+}
+.margeimgTop {
+	padding-top:10px;
+}
+.margeimgAbajo {
+	padding-bottom:20px;
+}
+.txtdatos{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #CCCCCC;
+	padding-top:8px;
+	padding-bottom:8px;
+	font-style: italic;
+}
+.txtdatos a{
+	color: #FFCC00;
+}
+.titulocaja{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color: #FC0;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+.contenedor{
+	/*background-image:url('../imagenes/backBlanco.png');*/
+	background-position: right top;
+}
+.divpie {
+	background-color: #333333;
+	width:100%;
+	height:300px;
+	vertical-align:bottom;
+	float:none;
+	background-image:url('../imagenes/backDegrShapeUp.png');
+	background-repeat:repeat-x;
+	background-position:top;
+	position:relative;
+}
+.boxregistro {
+	margin:8px;
+	padding:10px;
+	width:220px;
+	background-color: #333;
+	/*background-image:url(images/backDegr.png);
+	background-repeat:repeat-x
+	background-position:top;;*/
+	border: 1px solid #CCC;
+	-moz-border-radius-bottomright: 9px;
+	-khtml-border-radius-bottomright: 9px;
+	-webkit-border-bottom-right-radius: 9px;
+	
+	-moz-border-radius-bottomleft: 9px;
+	-khtml-border-radius-bottomleft: 9px;
+	-webkit-border-bottom-left-radius: 9px;
+	
+	-moz-border-radius-topright: 9px;
+	-khtml-border-radius-topright: 9px;
+	-webkit-border-top-right-radius: 9px;
+	
+	-moz-border-radius-topleft: 9px;
+	-khtml-border-radius-topleft: 9px;
+	-webkit-border-top-left-radius: 9px;
+}
+#cajacont{
+	width:650px;
+	padding-top:5px;
+	padding-left:30px;
+	padding-right:30px;
+	font-size:12px;
+	line-height:18px;
+	text-align:left;
+	color:#ffffff;
+}
+.formaregistro {
+	background-image:url('../imagenes/backformaShapeUp.png');
+	background-repeat:no-repeat;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color:#FFFFFF;
+}
+.formaregistron {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color:#FFFFFF;
+}
+.formaregistron a {
+	text-decoration:none;
+	color:#FFCC00;
+}
+.formaregistron a:visited {
+	text-decoration:none;
+	color:#FFCC00;
+}
+.cuadrologo {
+	background:url('../imagenes/land_logoswedps.png') no-repeat;
+	background-position:right top;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color: #FFFFFF;
+	padding-left: 10px;
+	/*vertical-align:bottom;*/
+	font-weight: bold;
+	text-align: right;
+	padding-right: 15px;
+	padding-bottom: 50px;
+}
