@@ -169,3 +169,11 @@ transform: translate(-2px, 0) rotate(-45deg);
 figure{
   text-align: center;
 }
+
+.navigation{
+  cursor: pointer;
+  padding: 0.2em;
+  background: #ff6873;
+  color: white;
+  margin: 0.5em;
+}
