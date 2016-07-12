@@ -30,7 +30,7 @@
 
     $uuidPage = array_slice($uuids, 10*($page-1), 10);
 
-    $response["data"] = getDataFromUUID($uuidPage, $base_url, $search_element_url, $search_metadata_url);
+    $response["metadata"] = getDataFromUUID($uuidPage, $base_url, $search_element_url, $search_metadata_url);
     echo json_encode($response);
 
   } else if(isset($_GET["uuid"])){
