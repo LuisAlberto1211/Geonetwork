@@ -1,4 +1,5 @@
 <?php
+  $resultsPerPage = 10;
   $base_url = "http://smit.cenapred.gob.mx:8080/geonetwork/srv/eng/";
   $search_elements_url  = $base_url."xml.search?any=";
   $search_element_url   = $base_url."csw?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=";
@@ -14,23 +15,28 @@
     $response = Array();
     $uuids = Array();
 
-    for($i = 0; $i < count($xml_arr); $i++){
-      if($xml_arr[$i]['tag'] == 'RESPONSE' && $xml_arr[$i]['type'] == 'open'){
-        $response["length"] = (int)$xml_arr[$i]['attributes']['TO'];
-      } else if ($xml_arr[$i]['tag'] == 'UUID' && $xml_arr[$i]['value']) {
-        $uuids[] = $xml_arr[$i]['value'];
-      }
-    }
-
-    $maxPages = ceil($response["length"]/10);
+    $response["length"] = (int)$xml_arr[$xml_index["RESPONSE"][0]]['attributes']['TO'];
+    $maxPages = ceil($response["length"]/$resultsPerPage);
     $page = ($page > $maxPages) ? $maxPages : $page;
-
+    $page = ($page < 1) ? 1 : $page;
     $response["pages"] = $maxPages;
     $response["page"] = (int)$page;
 
-    $uuidPage = array_slice($uuids, 10*($page-1), 10);
+    $inicio = $resultsPerPage*($page-1);
+    $fin = $inicio;
+    if(($response["length"]-($resultsPerPage*($page-1))) >= $resultsPerPage){
+      $fin += $resultsPerPage;
+    } else if($response["length"] < $resultsPerPage){
+      $fin += $response["length"];
+    } else {
+      $fin += $response["length"]%($resultsPerPage*($page-1));
+    }
 
-    $response["metadata"] = getDataFromUUID($uuidPage, $base_url, $search_element_url, $search_metadata_url);
+    for($i = $inicio; $i < $fin; $i++){
+      $uuids[] = $xml_arr[$xml_index["GEONET:INFO"][$i*2]+2]['value'];
+    }
+
+    $response["metadata"] = getDataFromUUID($uuids, $base_url, $search_element_url, $search_metadata_url);
     echo json_encode($response);
 
   } else if(isset($_GET["uuid"])){
