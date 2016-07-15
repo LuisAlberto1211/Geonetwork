@@ -54,10 +54,7 @@
       <h2 class="title-sub">¿Qué desea buscar?</h2>
       <form id="keywords-form" action="">
         <input type="text" class="input-text" name="keywords" title="Palabras clave de búsqueda" placeholder="Ej: Volcanes" autofocus required>
-        <select class="country-list" name="pais" required>
-          <option value="">Selecciona un país</option>
-          <option value="MEX">México</option>
-          <option value="HON">Honduras</option>
+        <select class="country-list" id="country-list" name="pais" required>
         </select>
         <button type="submit" class="button-submit" id="keywords-button">Buscar<span class="loading"></span></button>
       </form>
@@ -66,13 +63,19 @@
     </section>
     <section id="results">
     </section>
+    <script id="country-template" type="text/x-handlebars-template">
+      <option value="">Selecciona un país</option>
+      {{#each this}}
+        <option value="{{@index}}">{{this.nombre}}</option>
+      {{/each}}
+    </script>
     <script id="pagination-template" type="text/x-handlebars-template">
       <p>Total de resultados: {{this.length}}</p>
       <p>Página {{this.page}} de {{this.pages}}</p>
       {{#compara this.page '>' 1}}
         <span class="navigation" onclick="cambiarPagina({{this.page}}, 'p')"> < </span>
       {{/compara}}
-      <span class="navigation">{{this.page}}</span>
+      <span>{{this.page}}</span>
       {{#compara this.pages '>' this.page}}
         <span class="navigation" onclick="cambiarPagina({{this.page}}, 'f')"> > </span>
       {{/compara}}
@@ -111,9 +114,32 @@
     <script>
       var text;
       var previousSearch;
+      var country;
 
       $("input").on('change',function(){
         text = this.value;
+      });
+
+      $("#country-list").on('change', function(){
+        country = this.value;
+      })
+
+      $(document).ready(function(){
+        $.ajax({
+          url: "buscador/controller/buscar.php",
+          data: {countries: 1},
+          type: "GET",
+          dataType: "json",
+          success: function(data){
+            console.log(data);
+            var country   = $("#country-template").html();
+            var countryTemplate = Handlebars.compile(country);
+            $("#country-list").html(countryTemplate(data));
+          },
+          error: function(error){
+            console.log(error);
+          }
+        });
       });
 
       function buscar(dataObj, text){
@@ -146,6 +172,7 @@
         var newPage = (type == 'p') ? pag - 1: pag + 1;
         var dataObj = {
           text: encodeURIComponent(text),
+          country: country,
           search: 1,
           page: newPage
         };
@@ -156,10 +183,12 @@
         e.preventDefault();
         var dataObj = {
           text: encodeURIComponent(text),
+          country: country,
           search: 1,
           page: 1
         };
-        buscar(dataObj, text);
+        if(text && country && text != "" && country != "")
+          buscar(dataObj, text);
       });
     </script>
   </body>
