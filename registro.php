@@ -66,7 +66,7 @@
     <script id="country-template" type="text/x-handlebars-template">
       <option value="">Selecciona un país</option>
       {{#each this}}
-        <option value="{{@index}}">{{this.nombre}}</option>
+        <option value="{{this.clave}}">{{this.nombre}}</option>
       {{/each}}
     </script>
     <script id="pagination-template" type="text/x-handlebars-template">
