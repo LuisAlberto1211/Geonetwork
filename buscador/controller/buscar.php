@@ -9,7 +9,7 @@
     $page = isset($_GET["page"]) ? $_GET["page"]: 1;
     $text = $_GET["text"];
     $country = $_GET["country"];
-    $base_url = $paises[$country]["url"];
+    $base_url = $url_geonetwork[$country]["url"];
     $xmlStr = file_get_contents($base_url.$search_elements_url.$text);
     $p = xml_parser_create();
     xml_parse_into_struct($p, $xmlStr, $xml_arr, $xml_index);
