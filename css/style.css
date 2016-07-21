@@ -27,28 +27,18 @@ html {
 }
 
 body {
-  min-height: 0;
+  box-sizing: border-box;
   display: inline-block;
   position: relative;
-  left: 15%;
-  margin: 0 auto;
-  box-shadow: 0 10px 0 0 #ff6873 inset;
-  background-color: #fefffa;
-  width: 70%;
-  padding: 30px;
-}
-@media (max-width: 550px) {
-body {
-  box-sizing: border-box;
-  transform: translate(0, 0);
-  width: 100%;
   margin: 0;
-  left: 0;
-}
+  box-shadow: 0 10px 0 0 #6F9E2E inset;
+  background-color: #fefffa;
+  width: 100%;
+  padding: 30px;
 }
 
 h1, h2 {
-color: #ff6873;
+color: #6F9E2E;
 }
 
 h1 {
@@ -112,7 +102,7 @@ right: 0;
 ul li i:before, ul li i:after {
 content: "";
 position: absolute;
-background-color: #ff6873;
+background-color: #6F9E2E;
 width: 3px;
 height: 9px;
 }
@@ -174,7 +164,7 @@ figure{
 .navigation{
   cursor: pointer;
   padding: 0.2em;
-  background: #ff6873;
+  background: #6F9E2E;
   color: white;
   margin: 0.5em;
 }
